@@ -1,19 +1,24 @@
 <!--
 ====================================================================
-  HD ELECTRIC — single-file website template
+  HD ELECTRIC — special-purpose & textile spindle motor manufacturer
   --------------------------------------------------------------
-  WHAT TO EDIT (search the file for the >>> markers):
-    >>> BRAND ....... company name appears in logo, <title>, footer
+  EDIT GUIDE (search for >>> markers):
+    >>> BRAND ....... company name (logo, <title>, footer)
     >>> HERO ........ headline + intro copy
-    >>> MOTOR ....... product cards. Example specs are PLACEHOLDERS.
-                      A copy-paste blank card sits in a comment right
-                      below the last card — duplicate it per motor.
-    >>> STATS ....... the 4 capability numbers (currently invented)
-    >>> WINDER ...... the "Work with us" hiring strip (stator winder)
+    >>> MOTOR ....... product cards. Card 1 & 2 are filled from your
+                      drawings (HEADLINE SPECS ONLY — no dimensions,
+                      tolerances, PCDs or bearing part numbers, by design).
+                      Card 3 is the custom/special-purpose CTA card.
+                      Copy-paste blank card sits in a comment below them.
+    >>> STATS ....... manufacturing numbers (placeholders — fill or delete)
+    >>> WINDER ...... the stator-winder hiring strip
     >>> CONTACT ..... phone / email / address
     >>> FORM ........ submissions open the visitor's email app (mailto).
-                      For a real inbox use formspree.io — note in <script>.
-  No pricing shown anywhere. No build step: open to preview, upload to deploy.
+                      Real inbox = formspree.io (note in <script>).
+  PRIVACY RULE baked in: only sellable specs are public. Keep dimensioned
+  drawings + CAD/STEP/GLB OFF the site entirely. The 3D motor is GENERIC
+  on purpose — never replace it with a model of a real part.
+  No build step: open to preview, upload to GitHub Pages to deploy.
 ====================================================================
 -->
 <html lang="en">
@@ -21,8 +26,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- >>> BRAND -->
-<title>HD Electric — Industrial Electric Motors &amp; Drives</title>
-<meta name="description" content="HD Electric supplies three-phase induction motors, gear motors, brake motors and variable-frequency drives. Specs, stock and fast quotes for plant and OEM buyers." />
+<title>HD Electric — Textile Spindle &amp; Special-Purpose Motor Manufacturer</title>
+<meta name="description" content="HD Electric designs and winds textile spindle and winding motors, and custom special-purpose motors, built to your machine spec. Inverter-ready, test-certified." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Archivo+Expanded:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -64,37 +69,38 @@
   .menu-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.2s}
 
   /* hero */
-  .hero{padding:78px 0 64px;border-bottom:1px solid var(--hairline)}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+  .hero{padding:72px 0 60px;border-bottom:1px solid var(--hairline)}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center}
   .eyebrow{font-family:'IBM Plex Mono';font-size:12.5px;font-weight:600;letter-spacing:2.5px;
     text-transform:uppercase;color:var(--copper);margin-bottom:20px;
     display:inline-flex;align-items:center;gap:10px}
   .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--copper)}
-  h1{font-family:'Archivo Expanded';font-weight:800;font-size:clamp(38px,5vw,62px);
-    line-height:.98;letter-spacing:-.5px;color:var(--ink)}
+  h1{font-family:'Archivo Expanded';font-weight:800;font-size:clamp(36px,4.6vw,58px);
+    line-height:1.0;letter-spacing:-.5px;color:var(--ink)}
   h1 em{font-style:normal;color:var(--copper)}
-  .hero p.lead{font-size:18px;color:var(--steel);margin:26px 0 32px;max-width:34ch}
+  .hero p.lead{font-size:18px;color:var(--steel);margin:24px 0 30px;max-width:38ch}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .ticker{margin-top:26px;font-family:'IBM Plex Mono';font-size:12.5px;color:var(--muted);
+    display:flex;gap:8px 18px;flex-wrap:wrap;letter-spacing:.5px}
+  .ticker b{color:var(--copper);font-weight:600}
 
-  /* signature: motor nameplate */
-  .plate{background:linear-gradient(160deg,var(--steel) 0%, var(--ink) 100%);
-    border-radius:6px;padding:26px 26px 22px;color:var(--paper);position:relative;
-    box-shadow:0 18px 40px -22px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06)}
-  .plate::before,.plate::after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;
-    background:radial-gradient(circle at 35% 35%, #6a7176, #2a3034);box-shadow:inset 0 1px 1px rgba(0,0,0,.5)}
-  .plate::before{top:12px;left:12px} .plate::after{top:12px;right:12px}
-  .plate .rivet-b{position:absolute;bottom:12px;width:9px;height:9px;border-radius:50%;
-    background:radial-gradient(circle at 35% 35%, #6a7176, #2a3034)}
-  .plate .rivet-b.l{left:12px} .plate .rivet-b.r{right:12px}
-  .plate-head{font-family:'Archivo Expanded';font-weight:700;font-size:13px;letter-spacing:1.5px;
-    text-transform:uppercase;color:var(--brass);text-align:center;
-    border-bottom:1px solid var(--hairline-dk);padding-bottom:14px;margin-bottom:6px}
-  .plate-row{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;
-    border-bottom:1px dashed var(--hairline-dk);font-family:'IBM Plex Mono'}
-  .plate-row:last-child{border-bottom:none}
-  .plate-row .k{font-size:12px;letter-spacing:1px;color:var(--muted-lt);text-transform:uppercase}
-  .plate-row .v{font-size:18px;font-weight:600;color:#fff}
-  .plate-row .v small{color:var(--copper-bright);font-size:12px;font-weight:500}
+  /* 3D motor stage */
+  .motor-stage{position:relative;width:100%;height:430px;border-radius:8px;overflow:hidden;
+    border:1px solid var(--hairline-dk);
+    background:radial-gradient(120% 120% at 50% 18%, #2b3338 0%, #15181b 55%, #0e1113 100%);
+    box-shadow:0 22px 50px -28px rgba(0,0,0,.7)}
+  .motor-stage canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+  .motor-stage canvas:active{cursor:grabbing}
+  .ms-badge{position:absolute;top:15px;left:17px;font-family:'Archivo Expanded';font-weight:800;
+    font-size:11.5px;letter-spacing:2px;color:var(--brass);text-transform:uppercase}
+  .ms-ctl{position:absolute;bottom:15px;left:17px;display:flex;gap:9px}
+  .ms-ctl button{font-family:'IBM Plex Mono';font-size:12px;font-weight:500;letter-spacing:.5px;
+    background:var(--copper);color:#fff;border:none;padding:8px 13px;border-radius:4px;cursor:pointer;transition:background .15s}
+  .ms-ctl button:hover{background:var(--copper-bright)}
+  .ms-ctl button.alt{background:transparent;color:#cfd6db;border:1px solid #4a5258}
+  .ms-ctl button.alt:hover{border-color:var(--copper);color:#fff}
+  .ms-hint{position:absolute;bottom:17px;right:17px;font-family:'IBM Plex Mono';font-size:11px;
+    color:#8b949a;letter-spacing:.5px;text-align:right;line-height:1.5}
 
   /* sections */
   section{padding:74px 0}
@@ -117,27 +123,34 @@
   .cat:hover{border-color:var(--copper);transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(0,0,0,.35)}
   .cat:hover::after{transform:scaleX(1)}
   .cat .ix{font-family:'IBM Plex Mono';font-size:12px;color:var(--muted-lt);font-weight:600}
-  .cat h3{font-family:'Archivo Expanded';font-weight:700;font-size:19px;margin:14px 0 9px;letter-spacing:-.2px}
+  .cat h3{font-family:'Archivo Expanded';font-weight:700;font-size:18px;margin:14px 0 4px;letter-spacing:-.2px}
+  .cat .model{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--muted);margin-bottom:11px}
   .cat p{font-size:14px;color:var(--muted);margin-bottom:18px}
   .spec{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--steel);border-top:1px dashed var(--hairline);
     padding-top:13px;display:grid;gap:6px}
-  .spec span{display:flex;justify-content:space-between}
-  .spec b{color:var(--copper);font-weight:600}
+  .spec span{display:flex;justify-content:space-between;gap:12px}
+  .spec b{color:var(--copper);font-weight:600;text-align:right}
   .cat-quote{margin-top:18px;font-family:'IBM Plex Mono';font-size:12.5px;font-weight:600;
     color:var(--ink);letter-spacing:.5px;align-self:flex-start;border-bottom:1.5px solid var(--copper);
     padding-bottom:2px;transition:color .15s}
   .cat-quote:hover{color:var(--copper)}
+  .cat.custom{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .cat.custom .ix{color:var(--copper-bright)}
+  .cat.custom h3{color:#fff}
+  .cat.custom p{color:var(--muted-lt)}
+  .cat.custom .cat-quote{color:#fff}
 
   /* stats */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hairline);
     border:1px solid var(--hairline);border-radius:6px;overflow:hidden}
   .stat{background:var(--paper);padding:32px 26px}
-  .stat .big{font-family:'Archivo Expanded';font-weight:900;font-size:44px;line-height:1;
+  .stat .big{font-family:'Archivo Expanded';font-weight:900;font-size:42px;line-height:1;
     color:var(--ink);letter-spacing:-1px}
-  .stat .big small{color:var(--copper);font-size:24px}
+  .stat .big small{color:var(--copper);font-size:22px}
   .stat .lbl{font-family:'IBM Plex Mono';font-size:12px;color:var(--muted);text-transform:uppercase;
     letter-spacing:1px;margin-top:12px;line-height:1.4}
-  .cap-note{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .cap-lead{max-width:62ch;color:var(--steel);font-size:16px;line-height:1.75;margin-bottom:34px}
+  .cap-note{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
   .tag{font-family:'IBM Plex Mono';font-size:12.5px;background:var(--ink);color:var(--paper);
     padding:8px 14px;border-radius:var(--r);letter-spacing:.5px}
 
@@ -155,7 +168,7 @@
     font-family:'Archivo';font-size:15px}
   .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--copper);
     box-shadow:0 0 0 3px rgba(194,97,26,.25)}
-  .field textarea{resize:vertical;min-height:96px}
+  .field textarea{resize:vertical;min-height:104px}
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .info-block{border-top:2px solid var(--copper);padding-top:22px;margin-bottom:30px}
   .info-block h4{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
@@ -163,14 +176,15 @@
   .info-block p{color:var(--paper);font-size:16px;line-height:1.7}
   .info-block a:hover{color:var(--copper-bright)}
   #formMsg{font-family:'IBM Plex Mono';font-size:13px;margin-top:8px;min-height:18px}
+  .priv-note{font-family:'IBM Plex Mono';font-size:12px;color:var(--muted-lt);margin-top:14px;line-height:1.6}
 
-  /* careers / winder strip — deliberately quieter than the rest */
+  /* careers / winder strip */
   #careers{background:var(--paper-2);border-top:1px solid var(--hairline)}
   .career-band{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
     background:var(--paper);border:1px solid var(--hairline);border-left:4px solid var(--copper);
     border-radius:6px;padding:30px 34px}
   .career-band .eyebrow{margin-bottom:12px}
-  .career-band h3{font-family:'Archivo Expanded';font-weight:700;font-size:23px;letter-spacing:-.2px;margin-bottom:8px}
+  .career-band h3{font-family:'Archivo Expanded';font-weight:700;font-size:22px;letter-spacing:-.2px;margin-bottom:8px}
   .career-band .role-meta{font-family:'IBM Plex Mono';font-size:13px;color:var(--steel);
     display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px}
   .career-band .role-meta span b{color:var(--copper);font-weight:600}
@@ -186,14 +200,12 @@
   /* reveal */
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease, transform .5s ease}
   .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .reveal{opacity:1;transform:none;transition:none}
-  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
 
   /* responsive */
   @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .motor-stage{height:380px}
     .cats{grid-template-columns:repeat(2,1fr)}
     .stats{grid-template-columns:repeat(2,1fr)}
     .contact-grid{grid-template-columns:1fr;gap:36px}
@@ -210,7 +222,9 @@
     .menu-toggle{display:block}
     .cats{grid-template-columns:1fr}
     .field-row{grid-template-columns:1fr}
-    .hero{padding:52px 0 44px}
+    .hero{padding:48px 0 42px}
+    .motor-stage{height:340px}
+    .ms-hint{display:none}
     section{padding:54px 0}
   }
 </style>
@@ -223,7 +237,7 @@
     <a href="#top" class="logo"><span class="mark"></span>HD Electric</a>
     <nav class="links" id="nav">
       <a href="#products">Motors</a>
-      <a href="#capabilities">Capabilities</a>
+      <a href="#capabilities">How we build</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="btn">Request a quote</a>
@@ -239,125 +253,138 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="eyebrow">Industrial electric motors &amp; drives</span>
-      <h1>The right motor, <em>sized and supplied.</em></h1>
-      <p class="lead">Induction motors, gear motors, brake motors and VFDs — specced to your load and quoted fast, for plant maintenance and OEM builds.</p>
+      <span class="eyebrow">Textile &amp; special-purpose motor manufacturer</span>
+      <h1>Spindle motors, <em>built to the machine.</em></h1>
+      <p class="lead">We design and wind textile spindle and winding motors — and custom special-purpose motors — to your spec. Inverter-ready, in-house wound, test-certified.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn">Request a quote</a>
-        <a href="#products" class="btn ghost">Browse the range</a>
+        <a href="#products" class="btn ghost">See the range</a>
+      </div>
+      <div class="ticker">
+        <span>In-house <b>stator winding</b></span>
+        <span>Class <b>F / H</b> insulation</span>
+        <span><b>FAG / SKF</b> bearings</span>
+        <span>Every unit <b>tested</b></span>
       </div>
     </div>
-    <div class="plate reveal" aria-label="Capability nameplate">
-      <span class="rivet-b l"></span><span class="rivet-b r"></span>
-      <!-- >>> edit these ranges to your actual supply spread -->
-      <div class="plate-head">Supply Range — Rated</div>
-      <div class="plate-row"><span class="k">Power</span><span class="v">[__]–[__] <small>kW</small></span></div>
-      <div class="plate-row"><span class="k">Speed</span><span class="v">[__]–[__] <small>rpm</small></span></div>
-      <div class="plate-row"><span class="k">Voltage</span><span class="v">230/415 <small>V · 3ph</small></span></div>
-      <div class="plate-row"><span class="k">Efficiency</span><span class="v">IE[_] / IE[_]</span></div>
-      <div class="plate-row"><span class="k">Ingress</span><span class="v">IP[__] <small>std</small></span></div>
-      <div class="plate-row"><span class="k">Frames</span><span class="v">[__]–[__] <small>IEC</small></span></div>
+
+    <!-- interactive cutaway motor (GENERIC — not a real part) -->
+    <div class="motor-stage reveal">
+      <div class="ms-badge">Inside an HD Electric motor</div>
+      <canvas id="motorCanvas"></canvas>
+      <div class="ms-ctl">
+        <button id="btnOpen">Open motor</button>
+        <button id="btnSpin" class="alt">Pause spin</button>
+      </div>
+      <div class="ms-hint">drag to rotate<br>copper = stator windings</div>
     </div>
   </div>
 </section>
 
-<!-- >>> MOTOR — these cards are EXAMPLES. Replace the names, descriptions and
-     spec rows with your real motors. To add a motor, copy the blank card in the
-     comment right after the last <article> and fill it in. -->
+<!-- >>> MOTOR — Cards 1 & 2 filled from your drawings, HEADLINE SPECS ONLY.
+     No dimensions/tolerances/PCD/bearing numbers, on purpose. Card 3 = custom CTA.
+     To add a real motor, copy the blank card in the comment after card 3. -->
 <section id="products">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="num">01 — Our motors</span>
-        <h2>Pick the drive train,<br>we'll match the motor.</h2>
+        <span class="num">01 — What we build</span>
+        <h2>Textile spindle motors,<br>and whatever the machine needs.</h2>
       </div>
-      <p>Held in IEC standard frames, so a replacement bolts straight onto the existing base and coupling.</p>
+      <p>Wound in-house and built to your application — not pulled off a shelf. Tell us the machine and we engineer the motor to it.</p>
     </div>
     <div class="cats">
 
       <article class="cat reveal">
         <span class="ix">M-01</span>
-        <h3>[Motor name]</h3>
-        <p>[One line on what it's for — e.g. pumps, fans, conveyors.]</p>
+        <h3>Ring Twister Spindle Motor</h3>
+        <div class="model">A32-W0560 series</div>
+        <p>Inverter-fed spindle motor for ring-twisting machines.</p>
         <div class="spec">
-          <span>Power <b>[__ kW]</b></span>
-          <span>Speed <b>[__ rpm]</b></span>
-          <span>Frame <b>[IEC __]</b></span>
-          <span>Mount <b>[B3 / B5]</b></span>
-          <span>Class <b>[IE_]</b></span>
+          <span>Power <b>560 W · 3-ph</b></span>
+          <span>Poles <b>2-pole</b></span>
+          <span>Supply <b>415 V</b></span>
+          <span>Drive <b>40–100 Hz</b></span>
+          <span>Insulation <b>Class H</b></span>
+          <span>Application <b>Ring twisting</b></span>
         </div>
         <a class="cat-quote" href="#contact">Request quote →</a>
       </article>
 
       <article class="cat reveal">
         <span class="ix">M-02</span>
-        <h3>[Motor name]</h3>
-        <p>[One line on what it's for.]</p>
+        <h3>Drum Winding Spindle Motor</h3>
+        <div class="model">180 W foot-mount series</div>
+        <p>Finned, foot-mounted spindle motor for drum / TFO winding.</p>
         <div class="spec">
-          <span>Power <b>[__ kW]</b></span>
-          <span>Speed <b>[__ rpm]</b></span>
-          <span>Frame <b>[IEC __]</b></span>
-          <span>Mount <b>[B3 / B5]</b></span>
-          <span>Class <b>[IE_]</b></span>
+          <span>Power <b>0.18 kW · 3-ph</b></span>
+          <span>Speed <b>1380 rpm</b></span>
+          <span>Supply <b>415/230 V · Y/Δ</b></span>
+          <span>Drive <b>50–75 Hz</b></span>
+          <span>Insulation <b>Class F</b></span>
+          <span>Application <b>Drum / TFO winding</b></span>
         </div>
         <a class="cat-quote" href="#contact">Request quote →</a>
       </article>
 
-      <article class="cat reveal">
+      <article class="cat custom reveal">
         <span class="ix">M-03</span>
-        <h3>[Motor name]</h3>
-        <p>[One line on what it's for.]</p>
-        <div class="spec">
-          <span>Power <b>[__ kW]</b></span>
-          <span>Speed <b>[__ rpm]</b></span>
-          <span>Frame <b>[IEC __]</b></span>
-          <span>Mount <b>[B3 / B5]</b></span>
-          <span>Class <b>[IE_]</b></span>
+        <h3>Custom / Special-Purpose</h3>
+        <div class="model">built to your spec</div>
+        <p>Send the application — load, speed, frequency, shaft and mounting — and we engineer and wind a motor to it.</p>
+        <div class="spec" style="border-color:var(--hairline-dk)">
+          <span style="color:var(--muted-lt)">Wound <b>in-house</b></span>
+          <span style="color:var(--muted-lt)">Inverter <b>3-ph ready</b></span>
+          <span style="color:var(--muted-lt)">Tested <b>every unit</b></span>
         </div>
-        <a class="cat-quote" href="#contact">Request quote →</a>
+        <a class="cat-quote" href="#contact">Start a build →</a>
       </article>
 
-      <!-- ========= COPY-PASTE BLANK CARD: duplicate this block per motor =========
+      <!-- ===== COPY-PASTE BLANK CARD: duplicate per real motor (headline specs only) =====
       <article class="cat reveal">
         <span class="ix">M-04</span>
         <h3>[Motor name]</h3>
-        <p>[One line on what it's for.]</p>
+        <div class="model">[model / series]</div>
+        <p>[One line: application.]</p>
         <div class="spec">
-          <span>Power <b>[__ kW]</b></span>
-          <span>Speed <b>[__ rpm]</b></span>
-          <span>Frame <b>[IEC __]</b></span>
-          <span>Mount <b>[B3 / B5]</b></span>
-          <span>Class <b>[IE_]</b></span>
+          <span>Power <b>[__]</b></span>
+          <span>Speed <b>[__ rpm / poles]</b></span>
+          <span>Supply <b>[__ V]</b></span>
+          <span>Drive <b>[__ Hz]</b></span>
+          <span>Insulation <b>[Class _]</b></span>
+          <span>Application <b>[__]</b></span>
         </div>
         <a class="cat-quote" href="#contact">Request quote →</a>
       </article>
-      ======================================================================= -->
+      ============================================================================ -->
 
     </div>
   </div>
 </section>
 
-<!-- >>> STATS — these numbers are PLACEHOLDERS. Put real ones or delete the block. -->
+<!-- >>> STATS — manufacturing numbers. Placeholders: put real ones or delete the block. -->
 <section id="capabilities">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="num">02 — Why buyers stay</span>
-        <h2>Downtime is the<br>real cost. We cut it.</h2>
+        <span class="num">02 — How we build them</span>
+        <h2>We wind them.<br>We don't just sell them.</h2>
       </div>
-      <p>A motor is cheap next to an idle line. Everything below is built around getting you running again.</p>
+      <p>Drag the motor at the top to see the copper stator windings — that's the part we make in-house.</p>
     </div>
+    <p class="cap-lead reveal">Stators wound in-house, aluminium-extrusion housings machined to size, pressure-die-cast end covers, branded FAG/SKF bearings and Class F/H insulation systems. Every motor is electrically tested before it leaves — built to the machine it runs on, not approximated from a catalogue.</p>
     <div class="stats reveal">
-      <div class="stat"><div class="big">[__]<small>h</small></div><div class="lbl">Quote turnaround on stocked frames</div></div>
-      <div class="stat"><div class="big">[__]<small>+</small></div><div class="lbl">Motors held in stock</div></div>
-      <div class="stat"><div class="big">[__]<small>mo</small></div><div class="lbl">Warranty on new motors</div></div>
-      <div class="stat"><div class="big">[__]<small>%</small></div><div class="lbl">Orders shipped complete, first pass</div></div>
+      <div class="stat"><div class="big">[__]<small>/mo</small></div><div class="lbl">Motors wound &amp; built per month</div></div>
+      <div class="stat"><div class="big">[__]<small>yr</small></div><div class="lbl">Building spindle motors</div></div>
+      <div class="stat"><div class="big">100<small>%</small></div><div class="lbl">Units electrically tested</div></div>
+      <div class="stat"><div class="big">[__]<small>+</small></div><div class="lbl">Custom builds delivered</div></div>
     </div>
     <div class="cap-note reveal">
-      <span class="tag">IEC standard frames</span>
-      <span class="tag">Test certificates supplied</span>
-      <span class="tag">On-site sizing support</span>
-      <span class="tag">In-house rewinds</span>
+      <span class="tag">In-house stator winding</span>
+      <span class="tag">CNC-machined housings</span>
+      <span class="tag">FAG / SKF bearings</span>
+      <span class="tag">Class F / H insulation</span>
+      <span class="tag">Inverter-duty rated</span>
     </div>
   </div>
 </section>
@@ -367,13 +394,13 @@
     <div class="sec-head reveal">
       <div>
         <span class="num">03 — About</span>
-        <h2>Engineers first,<br>resellers second.</h2>
+        <h2>Built to spec,<br>not pulled from stock.</h2>
       </div>
-      <p>We size the motor to the actual load, duty cycle and drive — so it lands as a fit, not a guess.</p>
+      <p>Most "motor suppliers" resell. We design, wind and test ours.</p>
     </div>
     <div class="reveal" style="max-width:62ch;color:var(--steel);font-size:16px;line-height:1.75">
-      <p>HD Electric supplies and services industrial electric motors and drives for manufacturing plants and machine builders. Tell us the application — load, speed, duty, mounting and the drive it runs on — and we return a sized recommendation with a lead time.</p>
-      <p style="margin-top:16px">Replace a failed unit, spec a new line, or hand us the rewind. The aim is the same: the right motor on the base, turning, with paperwork that passes audit.</p>
+      <p>HD Electric manufactures textile spindle and winding motors, and custom special-purpose motors, for machine builders and mills. Tell us the application — the machine, load, speed, drive frequency, shaft and mounting — and we engineer, wind and test a motor that fits it.</p>
+      <p style="margin-top:16px">Ring twisters, drum and TFO winders, or a one-off special — the work is the same: the right motor on the machine, wound properly, tested, and documented.</p>
     </div>
   </div>
 </section>
@@ -384,52 +411,53 @@
     <div class="sec-head reveal">
       <div>
         <span class="num">04 — Request a quote</span>
-        <h2>Tell us the application.</h2>
+        <h2>Tell us the machine.</h2>
       </div>
-      <p>The more you give us — load, speed, duty, mounting, voltage — the tighter the quote comes back.</p>
+      <p>The more you give us — application, power, voltage, speed or frequency, shaft, mounting — the tighter the quote.</p>
     </div>
     <div class="contact-grid">
       <div class="reveal">
         <div class="field"><label for="name">Name / company</label>
-          <input id="name" type="text" placeholder="Your name, plant or company" /></div>
+          <input id="name" type="text" placeholder="Your name, mill or machine-build company" /></div>
         <div class="field-row">
           <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@company.com" /></div>
           <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" placeholder="+91 ..." /></div>
         </div>
-        <div class="field"><label for="product">Motor type</label>
+        <div class="field"><label for="product">Motor</label>
           <select id="product">
-            <option>[Motor name — M-01]</option>
-            <option>[Motor name — M-02]</option>
-            <option>[Motor name — M-03]</option>
-            <option>Not sure — need sizing help</option>
+            <option>Ring Twister Spindle Motor</option>
+            <option>Drum Winding Spindle Motor</option>
+            <option>Custom / special-purpose motor</option>
+            <option>Not sure — need engineering help</option>
           </select>
         </div>
         <div class="field"><label for="msg">Application details</label>
-          <textarea id="msg" placeholder="Load, speed (rpm), duty cycle, mounting (B3/B5), voltage, qty..."></textarea></div>
+          <textarea id="msg" placeholder="Machine / application, power (W/kW), supply voltage, speed or drive frequency, shaft length, mounting, quantity..."></textarea></div>
         <button class="btn" id="sendBtn" type="button">Send inquiry</button>
         <div id="formMsg"></div>
       </div>
       <div class="reveal">
-        <div class="info-block"><h4>Sales desk</h4>
+        <div class="info-block"><h4>Sales / engineering</h4>
           <p><a href="tel:+910000000000">+91 [phone]</a><br>
              <a href="mailto:sales@hdelectric.example">sales@hdelectric.example</a></p></div>
-        <div class="info-block"><h4>Works &amp; stock</h4>
+        <div class="info-block"><h4>Works</h4>
           <p>[Street address]<br>[City, State — PIN]<br>India</p></div>
         <div class="info-block"><h4>Hours</h4>
-          <p>Mon–Sat · 09:30–18:30 IST<br>Emergency rewind: on call</p></div>
+          <p>Mon–Sat · 09:30–18:30 IST</p></div>
+        <p class="priv-note">Detailed drawings and datasheets are shared on request after we understand your application — not published here.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- >>> WINDER — hiring strip. Fill the [brackets]. Placed below products on purpose. -->
+<!-- >>> WINDER — stator-winder hiring strip. Fill the [brackets]. -->
 <section id="careers">
   <div class="wrap">
     <div class="career-band reveal">
       <div>
         <span class="eyebrow">Work with us</span>
         <h3>We're hiring a [Stator Winder]</h3>
-        <p style="color:var(--muted);font-size:15px;max-width:54ch">[One line: e.g. Skilled motor winder to rewind stators for industrial motors at our works.]</p>
+        <p style="color:var(--muted);font-size:15px;max-width:54ch">[One line: skilled motor winder to wind stators for our spindle and special-purpose motors.]</p>
         <div class="role-meta">
           <span>Type <b>[Full-time / Contract]</b></span>
           <span>Location <b>[City]</b></span>
@@ -448,13 +476,15 @@
   <div class="wrap foot">
     <!-- >>> BRAND -->
     <a href="#top" class="logo"><span class="mark"></span>HD Electric</a>
-    <span>© <span id="yr"></span> HD Electric. Industrial motors, gear units &amp; drives.</span>
+    <span>© <span id="yr"></span> HD Electric. Textile spindle &amp; special-purpose motors — manufactured.</span>
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
+  // mobile menu
   const menuBtn = document.getElementById('menuBtn');
   const nav = document.getElementById('nav');
   menuBtn.addEventListener('click', () => {
@@ -465,29 +495,107 @@
     nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false);
   }));
 
+  // scroll reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // >>> FORM — opens the visitor's email app (mailto). For a real inbox, make a
-  // free form at https://formspree.io and replace the body of handleInquiry()
-  // with: fetch('https://formspree.io/f/XXXX',{method:'POST',headers:{'Content-Type':'application/json'},
-  //        body:JSON.stringify({name,email,phone,product,msg})})
+  // >>> FORM — opens visitor's email app (mailto). Real inbox: make a free form at
+  // https://formspree.io and replace the body below with a fetch() POST to it.
   function handleInquiry(){
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const product = document.getElementById('product').value;
-    const msg = document.getElementById('msg').value.trim();
-    const out = document.getElementById('formMsg');
-    if(!name || !email){ out.style.color='#E07A2C'; out.textContent='Add a name and email so we can reply.'; return; }
-    const subject = encodeURIComponent('Quote request — ' + product + ' — ' + name);
-    const body = encodeURIComponent('Name/Company: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\nMotor: '+product+'\n\nApplication details:\n'+msg);
-    window.location.href = 'mailto:sales@hdelectric.example?subject='+subject+'&body='+body;
-    out.style.color='#D9A441'; out.textContent='Opening your email app — hit send to reach the sales desk.';
+    const name=document.getElementById('name').value.trim();
+    const email=document.getElementById('email').value.trim();
+    const phone=document.getElementById('phone').value.trim();
+    const product=document.getElementById('product').value;
+    const msg=document.getElementById('msg').value.trim();
+    const out=document.getElementById('formMsg');
+    if(!name||!email){ out.style.color='#E07A2C'; out.textContent='Add a name and email so we can reply.'; return; }
+    const subject=encodeURIComponent('Quote request — '+product+' — '+name);
+    const body=encodeURIComponent('Name/Company: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\nMotor: '+product+'\n\nApplication details:\n'+msg);
+    window.location.href='mailto:sales@hdelectric.example?subject='+subject+'&body='+body;
+    out.style.color='#D9A441'; out.textContent='Opening your email app — hit send to reach us.';
   }
   document.getElementById('sendBtn').addEventListener('click', handleInquiry);
+
+  // ---- interactive cutaway motor (generic) ----
+  (function(){
+    const stage = document.querySelector('.motor-stage');
+    const canvas = document.getElementById('motorCanvas');
+    if(!window.THREE || !canvas) return;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.localClippingEnabled = true;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(2.4, 1.5, 6.6); camera.lookAt(0,0,0);
+
+    scene.add(new THREE.AmbientLight(0xb9c2c8, 0.55));
+    const key=new THREE.DirectionalLight(0xffffff,1.0); key.position.set(5,8,6); scene.add(key);
+    const fill=new THREE.DirectionalLight(0x9fb4c0,0.4); fill.position.set(-5,2,-4); scene.add(fill);
+    const warm=new THREE.PointLight(0xE07A2C,0.5,12); warm.position.set(0,0,4); scene.add(warm);
+
+    const motor=new THREE.Group(); scene.add(motor);
+
+    const matHousing=new THREE.MeshStandardMaterial({color:0x3a4248,metalness:0.65,roughness:0.42});
+    const matFin=new THREE.MeshStandardMaterial({color:0x434c52,metalness:0.6,roughness:0.5});
+    const matEnd=new THREE.MeshStandardMaterial({color:0x282f34,metalness:0.55,roughness:0.55});
+    const matTerm=new THREE.MeshStandardMaterial({color:0x20262a,metalness:0.4,roughness:0.6});
+    const matFoot=new THREE.MeshStandardMaterial({color:0x20262a,metalness:0.5,roughness:0.6});
+    const matStator=new THREE.MeshStandardMaterial({color:0x6b747a,metalness:0.5,roughness:0.5});
+    const matRotor=new THREE.MeshStandardMaterial({color:0x171b1e,metalness:0.6,roughness:0.45});
+    const matCopper=new THREE.MeshStandardMaterial({color:0xC2611A,metalness:0.85,roughness:0.32});
+    const matShaft=new THREE.MeshStandardMaterial({color:0xaab1b6,metalness:0.9,roughness:0.28});
+
+    const R=1.05, L=2.3;
+    const X=(g)=>{ g.rotation.z=Math.PI/2; return g; };
+
+    const body=new THREE.Mesh(new THREE.CylinderGeometry(R,R,L,48),matHousing); X(body); motor.add(body);
+    const finCount=30;
+    for(let i=0;i<finCount;i++){
+      const grp=new THREE.Group(); grp.rotation.x=(i/finCount)*Math.PI*2;
+      const fin=new THREE.Mesh(new THREE.BoxGeometry(L,0.22,0.05),matFin); fin.position.y=R+0.11;
+      grp.add(fin); motor.add(grp);
+    }
+    [-1,1].forEach(s=>{ const e=new THREE.Mesh(new THREE.CylinderGeometry(R+0.05,R+0.05,0.22,48),matEnd); X(e); e.position.x=s*(L/2+0.02); motor.add(e); });
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.15,0.15,1.9,28),matShaft); X(shaft); shaft.position.x=L/2+0.85; motor.add(shaft);
+    const stub=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.13,0.4,24),matShaft); X(stub); stub.position.x=-(L/2+0.18); motor.add(stub);
+    const term=new THREE.Mesh(new THREE.BoxGeometry(0.62,0.34,0.5),matTerm); term.position.set(0,R+0.18,0); motor.add(term);
+    [-0.7,0.7].forEach(x=>{ const f=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.16,1.5),matFoot); f.position.set(x,-(R+0.02),0); motor.add(f); });
+
+    const stator=new THREE.Mesh(new THREE.CylinderGeometry(0.9,0.9,L-0.25,48),matStator); X(stator); motor.add(stator);
+    const rotor=new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.42,L+0.05,36),matRotor); X(rotor); motor.add(rotor);
+    [-1,1].forEach(s=>{ [0.62,0.8].forEach((rad,k)=>{
+      const coil=new THREE.Mesh(new THREE.TorusGeometry(rad,0.11,14,40),matCopper);
+      coil.rotation.y=Math.PI/2; coil.position.x=s*(L/2-0.05-k*0.04); motor.add(coil);
+    });});
+
+    const clip=new THREE.Plane(new THREE.Vector3(0,0,-1),0);
+    const housingMats=[matHousing,matFin,matEnd,matTerm,matFoot];
+    let open=false;
+    function setOpen(v){ open=v; housingMats.forEach(m=>{ m.clippingPlanes=v?[clip]:[]; m.needsUpdate=true; });
+      document.getElementById('btnOpen').textContent=v?'Close motor':'Open motor'; }
+
+    motor.rotation.x=0.32; motor.rotation.y=-0.55;
+
+    let dragging=false, px=0, py=0, autoSpin=true;
+    canvas.addEventListener('pointerdown', e=>{ dragging=true; px=e.clientX; py=e.clientY; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', e=>{ if(!dragging)return;
+      motor.rotation.y+=(e.clientX-px)*0.01; motor.rotation.x+=(e.clientY-py)*0.01;
+      motor.rotation.x=Math.max(-1.2,Math.min(1.2,motor.rotation.x)); px=e.clientX; py=e.clientY; });
+    const stop=()=>dragging=false;
+    canvas.addEventListener('pointerup',stop); canvas.addEventListener('pointerleave',stop);
+
+    document.getElementById('btnOpen').addEventListener('click',()=>setOpen(!open));
+    document.getElementById('btnSpin').addEventListener('click',e=>{ autoSpin=!autoSpin; e.target.textContent=autoSpin?'Pause spin':'Resume spin'; });
+
+    function resize(){ const w=stage.clientWidth,h=stage.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+    window.addEventListener('resize',resize); resize();
+
+    (function animate(){ requestAnimationFrame(animate); if(autoSpin&&!dragging) motor.rotation.y+=0.004; renderer.render(scene,camera); })();
+  })();
 </script>
 </body>
 </html>
